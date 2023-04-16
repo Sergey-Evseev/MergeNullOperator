@@ -30,13 +30,15 @@ namespace NamesOutput
                 return $"Фамилия: {FamilyName} | Имя: {Name} | Отчество: {Patronymic}";
             }
         }
-
+        //method GetPersons() returns a List of Person objects
         private List<Person> GetPersons()
         {
+            //The List is initialized with three Person objects:
             return new List<Person>()
             {
                 new Person() { Name="Martin", FamilyName="Dugin", Patronymic="Igorevitch"},
-                new Person() { Name="Kay", FamilyName="Altos"}
+                new Person() { Name="Kay", FamilyName="Altos"},
+                new Person() { Name="Mag", FamilyName="Ranche"}
             };
         }
                        
