@@ -27,7 +27,7 @@ namespace NamesOutput
             //метод для формирования записи о человеке для передачи в листбокс
             public string GetFullName()
             {
-                return $"Фамилия: {FamilyName} | Имя: {Name} | Отчество: {Patronymic}";
+                return $"Фамилия: {FamilyName} | Имя: {Name} | Отчество: {Patronymic?? "нет отчества"}";
             }
         }
         //method GetPersons() returns a List of Person objects
@@ -38,7 +38,7 @@ namespace NamesOutput
             {
                 new Person() { Name="Martin", FamilyName="Dugin", Patronymic="Igorevitch"},
                 new Person() { Name="Kay", FamilyName="Altos"},
-                new Person() { Name="Mag", FamilyName="Ranche"}
+                new Person() { Name="Mag", FamilyName="Ranche"} 
             };
         }
                        
@@ -56,13 +56,7 @@ namespace NamesOutput
             foreach (var person in persons)
             {
                 listBox1.Items.Add(person.GetFullName());
-            }
-
-            // Set the DisplayMember property of the listBox1 control
-            //determines which property or method of the objects in the Items
-            //collection of the ListBox control is used to display the items in the control
-            //здесь не обязательно, только если с листе были бы объекты класса
-            listBox1.DisplayMember = "ToString";
+            }            
         }
     }
 }
