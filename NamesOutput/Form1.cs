@@ -33,7 +33,7 @@ namespace NamesOutput
         //method GetPersons() returns a List of Person objects
         private List<Person> GetPersons()
         {
-            //The List is initialized with three Person objects:
+            //The returned List is initialized with three Person objects:
             return new List<Person>()
             {
                 new Person() { Name="Martin", FamilyName="Dugin", Patronymic="Igorevitch"},
@@ -45,16 +45,17 @@ namespace NamesOutput
         
         private void runButton_Click(object sender, EventArgs e)
         {
-            // Create a new List<string> object and add the names
-            List<string> names = new List<string>();
-            names.Add("Family Name: Дугин | Name: Martin | Отчество: Игоревич");
-            names.Add("Family Name: Altos | Name: Kay | Отчество:");
-            names.Add("Family Name: Ranche | Name: Mag | Отчество:");
+            //очистка списка если там уже были какие-то записи
+            listBox1.Items.Clear();
 
-            // Loop through the names and add each one to the listBox1 control
-            foreach (string name in names)
+            //вызываем метод и передаем переменной список
+            var persons = GetPersons();
+
+            // в цикле каждый элемент добавляется в список и у него
+            // вызывается метод класса Person (возвращает строку)
+            foreach (var person in persons)
             {
-                listBox1.Items.Add(name);
+                listBox1.Items.Add(person.GetFullName());
             }
 
             // Set the DisplayMember property of the listBox1 control
