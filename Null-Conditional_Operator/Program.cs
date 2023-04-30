@@ -8,17 +8,41 @@ namespace Null_Conditional_Operator
 {
     internal class Program
     {
-        static int[]GetArray()
+        class Person
         {
-            int[] myArray = { 1, 2, 3 };
-            //int[] myArray = null;
-            return myArray;
+            public string FamilyName { get; set; }
+            public string Name { get; set; }
+            public string Patronymic { get; set; }
+
+            public Contacts Contacts { get; set; }
+
+            //метод для формирования записи о человеке для передачи в листбокс
+            public string GetFullName()
+            {
+                return $"Фамилия: {FamilyName} | Имя: {Name} | Отчество: {Patronymic ?? "нет отчества"}";
+            }
+            
+        }//end of class Person
+
+        public class Contacts
+        {
+            public string PhoneNumber { get; set; }
+            public string Email { get; set; }
+
+        }      
+
+        static Person GetPerson()
+        {
+            //Person person = new Person() { Contacts = new Contacts() { PhoneNumber = null} }; 
+            Person person = null;
+            return person;
         }
 
         static void Main(string[] args)
         {
-            int[] myArray = GetArray();
-            Console.WriteLine("Сумма элементов массива: " + (myArray?.Sum() ?? 0));
+            Person person = GetPerson();
+            string phoneNumber = person?.Contacts?.PhoneNumber ?? "Нет данных";
+            Console.WriteLine(phoneNumber);
         }
     }  
 }
