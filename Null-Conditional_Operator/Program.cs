@@ -21,6 +21,10 @@ namespace Null_Conditional_Operator
             {
                 return $"Фамилия: {FamilyName} | Имя: {Name} | Отчество: {Patronymic ?? "нет отчества"}";
             }
+            public string GetPhoneNumber()
+            {
+                return $"Phone Number: {Contacts?.PhoneNumber??"Нет данных"}";
+            }
             
         }//end of class Person
 
